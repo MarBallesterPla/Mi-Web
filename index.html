@@ -1,101 +1,421 @@
 <!DOCTYPE html>
-<!-- index.html -->
-<html lang="es">
+<html lang="ca" data-theme="dia">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mar Ballester Pla | 1º DAM</title>
-  <meta name="description" content="Web personal de Mar Ballester Pla, alumna de 1º DAM del IES Simarro." />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <!-- <header>: cabecera principal con nombre y frase -->
-  <header class="hero" id="inicio">
-    <div class="hero-content">
-      <p class="eyebrow">Web personal de marca</p>
-      <h1>Mar Ballester Pla</h1>
-      <p class="phrase">Les coses difícils se superen poc a poc, mosset a mosset.</p>
-      <p class="subtitle">1º DAM · IES Simarro</p>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      <!-- <nav>: navegación principal -->
-      <nav aria-label="Navegación principal">
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#lo-que-he-hecho">Lo que he hecho</a>
-        <a href="#me-gusta">Me gusta</a>
-        <a href="#contacto">Contacto</a>
+  <title>Mar Ballester Pla — 1r DAM · IES Simarro</title>
+  <meta name="description" content="Web personal de Mar Ballester Pla, estudiant de 1r de DAM a l'IES Simarro. Segona oportunitat, programació, natura i gimnàs.">
+  <meta name="theme-color" content="#2F5D46">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232F5D46'/%3E%3Ctext x='16' y='23' font-family='serif' font-size='18' font-weight='700' text-anchor='middle' fill='%23F4F0E4'%3EM%3C/text%3E%3C/svg%3E">
+
+  <!-- Tipografia: Fraunces (display càlid) + Hanken Grotesk (text) + IBM Plex Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <!-- Textura de paper -->
+  <div class="gra" aria-hidden="true"></div>
+  <!-- Llum que segueix el cursor -->
+  <div class="llum" aria-hidden="true"></div>
+
+  <!-- Enllaç d'accés ràpid -->
+  <a class="salt" href="#main">Salta al contingut</a>
+
+  <!-- ══ CAPÇALERA FIXA: monograma + navegació + tema ══ -->
+  <header class="cap" id="dalt">
+    <div class="cap__barra embolcall">
+      <a class="marca" href="#dalt" aria-label="Anar dalt">
+        <span class="marca__segell" aria-hidden="true">M</span>
+        <span class="marca__nom">Mar&nbsp;Ballester</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Navegació principal">
+        <ul>
+          <li><a href="#sobre">Sobre mi</a></li>
+          <li><a href="#fet">El que he fet</a></li>
+          <li><a href="#gusta">M'agrada</a></li>
+          <li><a href="#contacte">Contacte</a></li>
+        </ul>
       </nav>
+
+      <div class="cap__extres">
+        <button class="tema" id="tema" type="button" aria-pressed="false" title="Canviar dia/nit">
+          <span class="visually-hidden">Canviar tema</span>
+        </button>
+        <a class="btn btn--mini" href="#contacte">Escriu-me</a>
+        <button class="menú" id="menú" type="button" aria-expanded="false" aria-controls="nav">
+          <span aria-hidden="true"></span><span class="visually-hidden">Obri el menú</span>
+        </button>
+      </div>
     </div>
+    <div class="cap__progrés" aria-hidden="true"><i id="barra"></i></div>
   </header>
 
-  <!-- <main>: contenido principal -->
-  <main>
-    <!-- <section>: Sobre mí -->
-    <section id="sobre-mi" class="section reveal">
-      <h2>Sobre mí</h2>
+  <main id="main">
 
-      <!-- <article>: texto personal -->
-      <article>
-        <p>
-          Soy <strong>Mar Ballester Pla</strong>, del ciclo de <strong>1º DAM</strong> del <strong>IES Simarro</strong>.
-          Hace tiempo intenté estudiar <strong>Ingeniería Técnica de Gestión de Sistemas</strong> y no funcionó;
-          ahora curso DAM como una segunda oportunidad.
-        </p>
-        <p>
-          Me interesa el desarrollo de software, los sistemas y el diseño web.
-          Para mí, la vida es un experimento: cuando una cosa no funciona, cambio los parámetros y lo vuelvo a intentar.
-        </p>
-      </article>
+    <!-- ══ CAPÇALERA / HERO: nom + frase + consola de paràmetres ══ -->
+    <section class="hero" aria-labelledby="nom">
+      <div class="embolcall hero__graella">
+
+        <div class="hero__text">
+          <p class="ulleta" data-reveal>
+            <span>Xàtiva · València</span><span class="punt" aria-hidden="true"></span><span>2026</span>
+          </p>
+
+          <!-- El nom, en tres línies amb revelat -->
+          <h1 class="nom" id="nom">
+            <span class="lin"><i>Mar</i></span>
+            <span class="lin"><i>Ballester</i></span>
+            <span class="lin"><i class="ressalt">Pla</i></span>
+          </h1>
+
+          <!-- La frase: mosset a mosset -->
+          <p class="frase" data-reveal>
+            Les coses difícils se superen <strong>mosset a mosset</strong>.
+            Estudiant de <strong>1r de DAM</strong> a l'IES Simarro, amb una segona
+            oportunitat i moltes ganes d'aprendre.
+          </p>
+
+          <div class="acció" data-reveal>
+            <a class="btn btn--plena" href="#fet">Veure què he fet <span aria-hidden="true">↓</span></a>
+            <a class="btn" href="#sobre">La meua història</a>
+          </div>
+
+          <!-- Pista ràpida -->
+          <ul class="pistes" data-reveal>
+            <li><b data-compta="3">0</b><span>curs<br>acabats</span></li>
+            <li><b data-compta="2">0</b><span>oportunida<br>agafada</span></li>
+            <li><b data-compta="1">0</b><span>camí<br>per davant</span></li>
+          </ul>
+        </div>
+
+        <aside class="hero__costat" aria-label="Fitxa tècnica">
+          <p class="marca-aigua" aria-hidden="true">SEGONA OPORTUNITAT · 2026</p>
+
+          <!-- Consola: canviam els paràmetres -->
+          <div class="consola" data-reveal>
+            <div class="consola__dalt">
+              <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="consola__arxiu">experiment.js</span>
+              <span class="consola__etq">Node</span>
+            </div>
+            <pre class="consola__codi"><code data-tecleja></code><span class="cursor" aria-hidden="true"></span></pre>
+            <p class="consola__sortida" data-ixida hidden>✓ paràmetres recalculats — tornem-hi</p>
+          </div>
+
+          <p class="avis">
+            <span class="avis__llum" aria-hidden="true"></span>
+            Busque pràctiques FCT · <strong>Xàtiva / València</strong>
+          </p>
+        </aside>
+
+      </div>
     </section>
 
-    <!-- <section>: Lo que he hecho -->
-    <section id="lo-que-he-hecho" class="section reveal">
-      <h2>Lo que he hecho</h2>
+    <!-- ══ FRANJA LLISCANT ══ -->
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta__pista" data-marquesina>
+        <span>1r DAM</span><em>✳</em><span>mosset a mosset</span><em>✳</em><span>Disseny Web</span><em>✳</em>
+        <span>Ofimàtica</span><em>✳</em><span>Multimèdia</span><em>✳</em><span>natura</span><em>✳</em>
+        <span>gimnàs</span><em>✳</em><span>família</span><em>✳</em><span>sèries</span><em>✳</em>
+        <span>aprendre</span><em>✳</em><span>IES Simarro</span><em>✳</em>
+      </div>
+    </div>
 
-      <!-- <ul>: lista de logros y experiencias -->
-      <ul class="cards">
-        <li class="card">
-          <h3>1º DAM</h3>
-          <p>Estudio Desarrollo de Aplicaciones Multimedia en el IES Simarro.</p>
-        </li>
-        <li class="card">
-          <h3>Cursos relacionados con ordenadores</h3>
-          <p>Office, Diseño Web y Multimedia.</p>
-        </li>
-        <li class="card">
-          <h3>Segunda oportunidad</h3>
-          <p>Retomo la formación técnica con más motivación y una nueva estrategia.</p>
-        </li>
-      </ul>
+    <!-- ══ SECCIÓ: SOBRE MI ══ -->
+    <section class="sobre" id="sobre" aria-labelledby="t-sobre">
+      <div class="embolcall sobre__graella">
+
+        <!-- Columna esquerra fixa -->
+        <div class="sobre__lateral">
+          <p class="num-seccio">01 — Perfil</p>
+          <h2 class="titol" id="t-sobre" data-descodifica>Sobre mi</h2>
+
+          <figure class="retrat" data-reveal>
+            <div class="retrat__marc" aria-hidden="true">
+              <span class="retrat__sol"></span>
+              <span class="retrat__muntanya"></span>
+              <span class="retrat__inicial">MB</span>
+            </div>
+            <figcaption>Un camí de veritat, al costat de casa.</figcaption>
+          </figure>
+
+          <dl class="ficha">
+            <div><dt>Nom complet</dt><dd>Mar Ballester Pla</dd></div>
+            <div><dt>Cicle</dt><dd>1r DAM</dd></div>
+            <div><dt>Centre</dt><dd>IES Simarro, Xàtiva</dd></div>
+            <div><dt>Any</dt><dd>2026</dd></div>
+            <div><dt>Idiomes</dt><dd>ca · es</dd></div>
+          </dl>
+        </div>
+
+        <!-- Columna dreta: text + cronologia -->
+        <div class="sobre__cos">
+          <p class="plom" data-reveal>
+            Vaig provar l'Enginyeria Tècnica de Gestió de Sistemes i no va funcionar.
+            No va ser un fracàs: va ser una dada. Ara estic cursant 1r de DAM i em
+            donne una segona oportunitat.
+          </p>
+
+          <p data-reveal>
+            Tinc clar que les coses difícils no es resolen d'un salt, sinó poc a poc,
+            mosset a mosset. Per això estic fent cursos d'Ofimàtica, de Disseny Web
+            i de Multimèdia: cada xicotet bloc suma i al final fa un mur.
+          </p>
+
+          <p data-reveal>
+            Fora de les aules, camine per la natura, vaig al gimnàs i passe temps amb
+            els meus. M'agrada aprendre coses noves —i veure sèries per a desconnectar,
+            que també és aprendre a parar.
+          </p>
+
+          <!-- Cronologia -->
+          <h3 class="subtitol" data-reveal>El camí fins ací</h3>
+          <ol class="linia" data-linia>
+            <li><span class="linia__any">Abans</span>
+              <p class="linia__txt"><strong>Enginyeria Tècnica de Gestió de Sistemes.</strong>
+                 No va encaixar. Vaig tancar el quadern sense ràbia i amb una lliçó.</p></li>
+            <li><span class="linia__any">Cursos</span>
+              <p class="linia__txt"><strong>Ofimàtica · Disseny Web · Multimèdia.</strong>
+                 Les primeres eines: full de càlcul, pàgines, imatge i so.</p></li>
+            <li><span class="linia__any">Ara</span>
+              <p class="linia__txt"><strong>1r de DAM, IES Simarro.</strong>
+                 Programació, sistemes i bases de dades. La segona volta, feta amb calma.</p></li>
+            <li><span class="linia__any">Després</span>
+              <p class="linia__txt"><strong>2n DAM i pràctiques en empresa.</strong>
+                 El que ve, encara per escriure.</p></li>
+          </ol>
+
+          <!-- Cap a on vaig -->
+          <h3 class="subtitol" data-reveal>Què m'interessa</h3>
+          <ul class="objectius">
+            <li data-reveal><span class="marcador" aria-hidden="true">›</span>Acabar el cicle i seguir aprenent programació cada dia.</li>
+            <li data-reveal><span class="marcador" aria-hidden="true">›</span>Entendre bé les bases de dades i com es connecten amb una aplicació.</li>
+            <li data-reveal><span class="marcador" aria-hidden="true">›</span>Fer pràctiques en una empresa on em deixen tocar projectes reals.</li>
+            <li data-reveal><span class="marcador" aria-hidden="true">›</span>Un dia muntar una web xicoteta d'un negoci del poble.</li>
+          </ul>
+
+          <!-- Xifres -->
+          <ul class="xifres">
+            <li data-reveal><b data-compta="3">0</b><span>cursos fets</span></li>
+            <li data-reveal><b data-compta="2">0</b><span>graus provats</span></li>
+            <li data-reveal><b data-compta="1">0</b><span>segona oportunitat</span></li>
+            <li data-reveal><b data-compta="100" data-suf="%">0</b><span>ganes</span></li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- <section>: Me gusta -->
-    <section id="me-gusta" class="section reveal">
-      <h2>Me gusta</h2>
+    <!-- ══ SECCIÓ: EL QUE HE FET ══ -->
+    <section class="fet" id="fet" aria-labelledby="t-fet">
+      <div class="embolcall">
+        <div class="fet__cap">
+          <div>
+            <p class="num-seccio">02 — Trajectòria</p>
+            <h2 class="titol" id="t-fet" data-descodifica>El que he fet</h2>
+            <p class="intro" data-reveal>
+              No tinc un gran portafoli: tinc cursos fets, un camí canviat i aquesta web
+              feta a mà. Tot això també és feina.
+            </p>
+          </div>
 
-      <!-- <ul>: lista de gustos personales -->
-      <ul class="tags">
-        <li>Caminar por la naturaleza</li>
-        <li>Gimnasio</li>
-        <li>Pasar tiempo con los míos</li>
-        <li>Aprender cosas nuevas</li>
-        <li>Ver series</li>
-      </ul>
+          <!-- Filtres -->
+          <div class="filtres" role="group" aria-label="Filtrar">
+            <button class="xip is-actiu" data-filtra="*" aria-pressed="true">Tot</button>
+            <button class="xip" data-filtra="estudi" aria-pressed="false">Estudis</button>
+            <button class="xip" data-filtra="curs" aria-pressed="false">Cursos</button>
+            <button class="xip" data-filtra="propi" aria-pressed="false">Personal</button>
+          </div>
+        </div>
+
+        <!-- Targetes -->
+        <ul class="targetes" id="targetes">
+
+          <li class="c-2" data-cat="estudi" data-reveal>
+            <article class="tarja">
+              <span class="tarja__etq">Estudis</span>
+              <h3>1r de DAM</h3>
+              <p>Desenvolupament d'Aplicacions Multiplataforma a l'IES Simarro.
+                 Programació, sistemes, marques i bases de dades.</p>
+              <ul class="marques"><li>Programació</li><li>Sistemes</li><li>Bases de dades</li></ul>
+              <p class="tarja__peu">2025/26 · en curs</p>
+            </article>
+          </li>
+
+          <li class="c-2" data-cat="curs" data-reveal>
+            <article class="tarja">
+              <span class="tarja__etq">Curs</span>
+              <h3>Ofimàtica</h3>
+              <p>Full de càlcul, processador de textos i presentacions amb criteri:
+                 taules, fórmules i documents que s'entenen sols.</p>
+              <ul class="marques"><li>Calc</li><li>Writer</li><li>Organització</li></ul>
+              <p class="tarja__peu">Acreditat</p>
+            </article>
+          </li>
+
+          <li class="c-2" data-cat="curs" data-reveal>
+            <article class="tarja">
+              <span class="tarja__etq">Curs</span>
+              <h3>Disseny Web</h3>
+              <p>Estructura d'una pàgina, colors, tipografia i maquetació.
+                 Ací va nàixer la idea de fer aquesta web amb les meues mans.</p>
+              <ul class="marques"><li>HTML</li><li>CSS</li><li>Maquetació</li></ul>
+              <p class="tarja__peu">Acreditat</p>
+            </article>
+          </li>
+
+          <li class="c-2" data-cat="curs" data-reveal>
+            <article class="tarja">
+              <span class="tarja__etq">Curs</span>
+              <h3>Multimèdia</h3>
+              <p>Edició d'imatge i so, formats i resolucions. Aprender a mirar
+                 una pantalla també és una tècnica.</p>
+              <ul class="marques"><li>Imatge</li><li>So</li><li>Formats</li></ul>
+              <p class="tarja__peu">Acreditat</p>
+            </article>
+          </li>
+
+          <li class="c-2" data-cat="estudi" data-reveal>
+            <article class="tarja tarja--apagada">
+              <span class="tarja__etq">Abans</span>
+              <h3>ET de Gestió de Sistemes</h3>
+              <p>Una prova que no va funcionar. Vaig saber tancar la porta i triar
+                 un altre camí. Ací està la meua part preferida de la història.</p>
+              <ul class="marques"><li>Lliçó: canviar paràmetres</li></ul>
+              <p class="tarja__peu">Tancat · amb bon record</p>
+            </article>
+          </li>
+
+          <li class="c-2" data-cat="propi" data-reveal>
+            <article class="tarja tarja--destacada">
+              <span class="tarja__etq">Projecte</span>
+              <h3>Aquesta web</h3>
+              <p>HTML semàntic, CSS propi i JavaScript sense llibreries. Feta per mi,
+                 línia a línia, mosset a mosset.</p>
+              <ul class="marques"><li>HTML</li><li>CSS</li><li>JS pur</li><li>Accessible</li></ul>
+              <p class="tarja__peu">Oberta en esta mateixa pantalla</p>
+            </article>
+          </li>
+
+        </ul>
+        <p class="buit" id="buit" hidden>No hi ha res amb eixe filtre (encara).</p>
+      </div>
+    </section>
+
+    <!-- ══ SECCIÓ: M'AGRADA ══ -->
+    <section class="gusta" id="gusta" aria-labelledby="t-gusta">
+      <div class="embolcall">
+        <div class="gusta__cap">
+          <p class="num-seccio">03 — Fora de classe</p>
+          <h2 class="titol" id="t-gusta" data-descodifica>M'agrada</h2>
+          <p class="intro" data-reveal>El que em carrega les piles quan el cap demana pausa.</p>
+        </div>
+
+        <!-- Mosaic tipus bento -->
+        <ul class="mosaic">
+
+          <li class="m-3 m-alt" data-reveal>
+            <article class="caixa caixa--natura">
+              <h3>Caminar per la natura</h3>
+              <svg class="sender" viewBox="0 0 300 140" role="img" aria-label="Sender entre muntanyes">
+                <path class="s-cim" d="M0 108 L48 62 L86 96 L132 40 L176 88 L214 58 L262 100 L300 74"/>
+                <path class="s-camí" d="M12 132 C 70 118, 96 132, 150 120 S 240 108, 292 122"/>
+                <circle class="s-passada" cx="12" cy="132" r="4"/>
+              </svg>
+              <p>Botelles posades, motxilla xicoteta i un camí que no té pressa.
+                 El millor lloc per a pensar en calma.</p>
+              <p class="caixa__peu"><span>Serralana · Costera</span></p>
+            </article>
+          </li>
+
+          <li class="m-3 m-alt" data-reveal>
+            <article class="caixa caixa--gimnas">
+              <h3>Gimnàs</h3>
+              <p>Disciplina constant: la mateixa que necessite per a estudiar.
+                 Si el cos aguanta, el cap també.</p>
+              <ul class="barras">
+                <li><span>Força</span><i style="--v:72%"></i></li>
+                <li><span>Resistència</span><i style="--v:64%"></i></li>
+                <li><span>Mobilitat</span><i style="--v:58%"></i></li>
+              </ul>
+              <p class="caixa__peu"><span>4</span> dies / setmana</p>
+            </article>
+          </li>
+
+          <li class="m-2" data-reveal>
+            <article class="caixa caixa--familia">
+              <h3>Amb els meus</h3>
+              <p>Taula llarga, sobretaula i riures. El temps ben gastat.</p>
+              <div class="taula" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            </article>
+          </li>
+
+          <li class="m-2" data-reveal>
+            <article class="caixa caixa--apren">
+              <h3>Aprendre coses noves</h3>
+              <p>Un comandament, un atall, una recepta. Xicotets descobriments diaris.</p>
+              <ul class="peguetes"><li>comanar</li><li>explicar</li><li>provar</li><li>repetir</li></ul>
+            </article>
+          </li>
+
+          <li class="m-2" data-reveal>
+            <article class="caixa caixa--series">
+              <h3>Sèries</h3>
+              <p>Capítol a capítol, sense marató. Per a desconnectar el cap del codi.</p>
+              <div class="pantalla" aria-hidden="true"><span></span><span></span><span></span></div>
+              <p class="caixa__peu"><span>1</span> temporada / <span>0</span> culpes</p>
+            </article>
+          </li>
+
+        </ul>
+      </div>
     </section>
   </main>
 
-  <!-- <footer>: pie de página con contacto -->
-  <footer id="contacto" class="footer">
-    <div class="footer-content">
-      <h2>Contacto</h2>
+  <!-- ══ PEU: contacte ══ -->
+  <footer class="peu" id="contacte">
+    <div class="embolcall">
+      <p class="num-seccio num-seccio--clar">04 — Contacte</p>
 
-      <!-- <address>: información de contacto -->
-      <address>
-        <a href="mailto:mar_ballester@hotmail.com">mar_ballester@hotmail.com</a>
-      </address>
+      <h2 class="peu__titol" data-descodifica>Escriviu-me i ho mirem</h2>
 
-      <p>Mar Ballester Pla · <span id="year"></span></p>
+      <!-- La frase del peu -->
+      <p class="peu__cita">
+        «La vida és un experiment: quan una cosa no funciona,
+        cal canviar els paràmetres i tornar-ho a intentar.»
+      </p>
+
+      <div class="peu__botons">
+        <a class="btn btn--plena btn--gran" href="mailto:mar_ballester@hotmail.com">mar_ballester@hotmail.com</a>
+        <button class="btn" id="copiar" type="button" data-correu="mar_ballester@hotmail.com">Copiar el correu</button>
+      </div>
+
+      <ul class="peu__enllacos">
+        <li><a href="mailto:mar_ballester@hotmail.com">Correu <span aria-hidden="true">↗</span></a><small>mar_ballester@hotmail.com</small></li>
+        <!-- ✏️ Afig o esborra enllaços segons tingues -->
+        <li><a href="#sobre">Sobre mi <span aria-hidden="true">↗</span></a><small>la segona oportunitat</small></li>
+        <li><a href="#fet">El que he fet <span aria-hidden="true">↗</span></a><small>estudis i cursos</small></li>
+        <li><a href="#gusta">M'agrada <span aria-hidden="true">↗</span></a><small>natura, gimnàs, sèries</small></li>
+      </ul>
+
+      <div class="peu__legal">
+        <address>IES Simarro · Xàtiva, València · hora local: <b id="hora">--:--:--</b></address>
+        <p>Feta a mà amb HTML, CSS i JavaScript.</p>
+        <p>© <span id="any">2026</span> Mar Ballester Pla</p>
+        <a class="amunt" href="#dalt">Tornar dalt <span aria-hidden="true">↑</span></a>
+      </div>
     </div>
   </footer>
+
+  <!-- Avís flotant (copiar) -->
+  <p class="avis-volant" role="status" id="avis" hidden></p>
 
   <script src="script.js"></script>
 </body>
